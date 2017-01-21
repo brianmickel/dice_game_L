@@ -17,12 +17,24 @@ public class DiceGame {
     rollChosenDice(all_dice);
   }
 
+  public void saveChosenDice(int[] chosen_dice){
+    for(int i = 0; i < chosen_dice.length; i++){
+      if(chosen_dice[i]==99){break;}
+      //System.out.println(lumps.game_dice[i].maxValue);
+      savedStatus[chosen_dice[i]] = true;
+
+      System.out.println("Saved: " + "Dice "+ chosen_dice[i]);
+    }
+    currentRoll += 1;
+  }
+
   public void rollChosenDice(int[] chosen_dice){
     for(int i = 0; i < chosen_dice.length; i++){
+      if(chosen_dice[i]==99){break;}
       //System.out.println(lumps.game_dice[i].maxValue);
       int rollVal = game_dice[chosen_dice[i]].rollDice();
       rolledValues[chosen_dice[i]] = rollVal;
-      System.out.println(rollVal);
+      System.out.println("Dice " + i + ": " + rollVal);
     }
     currentRoll += 1;
   }
